@@ -4,6 +4,7 @@ import 'package:naguib_selim/presenter/auth_presenter.dart';
 import 'package:naguib_selim/ui/components/AlertDialog.dart';
 import 'package:naguib_selim/ui/components/MainButton.dart';
 import 'package:naguib_selim/ui/screens/forgot_password_page.dart';
+import 'package:naguib_selim/ui/side_menu_page.dart';
 import 'package:naguib_selim/utilities/alert_utilities.dart';
 
 import '../../utilities/text_field_utilities.dart';
@@ -27,17 +28,8 @@ class _RegisterPageState extends BaseState<RegisterPage> {
   final b2bNumberTextFieldController = TextEditingController();
   bool isB2BNumberTextFieldVisible = false;
 
-  // Future<void> _showErrorDialog(String message) async {
-  //   return showDialog<void>(
-  //     context: context,
-  //     barrierDismissible: false,
-  //     builder: (BuildContext context) {
-  //       return ErrorDialog(
-  //         message: message,
-  //       );
-  //     },
-  //   );
-  // }
+  //MARK: testing to open side menu
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void registerButtonPressed() async {
     if (TextFieldUtilities().validName(nameTextFieldController.text) == false) {
@@ -103,7 +95,14 @@ class _RegisterPageState extends BaseState<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: const SideMenuPage(),
       appBar: AppBar(
+        automaticallyImplyLeading:
+            false, // this will hide Drawer hamburger icon
+        actions: <Widget>[
+          Container()
+        ], // this will hide endDrawer hamburger icon
         title: const Text('Register'),
       ),
       body: SingleChildScrollView(
@@ -248,11 +247,13 @@ class _RegisterPageState extends BaseState<RegisterPage> {
                   foregroundColor: Colors.black, // Text Color
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ForgotPasswordPage()),
-                  );
+                  _scaffoldKey.currentState?.openEndDrawer();
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => ForgotPasswordPage(),
+                  //   ),
+                  // );
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
