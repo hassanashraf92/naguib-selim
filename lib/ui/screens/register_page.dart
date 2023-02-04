@@ -4,6 +4,7 @@ import 'package:naguib_selim/presenter/auth_presenter.dart';
 import 'package:naguib_selim/ui/components/AlertDialog.dart';
 import 'package:naguib_selim/ui/components/MainButton.dart';
 import 'package:naguib_selim/ui/screens/forgot_password_page.dart';
+import 'package:naguib_selim/ui/screens/profile_page.dart';
 import 'package:naguib_selim/ui/side_menu_page.dart';
 import 'package:naguib_selim/utilities/alert_utilities.dart';
 
@@ -98,12 +99,20 @@ class _RegisterPageState extends BaseState<RegisterPage> {
       key: _scaffoldKey,
       endDrawer: const SideMenuPage(),
       appBar: AppBar(
-        automaticallyImplyLeading:
-            false, // this will hide Drawer hamburger icon
-        actions: <Widget>[
-          Container()
-        ], // this will hide endDrawer hamburger icon
-        title: const Text('Register'),
+        leading: IconButton(
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.black, // Text Color
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -247,13 +256,13 @@ class _RegisterPageState extends BaseState<RegisterPage> {
                   foregroundColor: Colors.black, // Text Color
                 ),
                 onPressed: () {
-                  _scaffoldKey.currentState?.openEndDrawer();
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => ForgotPasswordPage(),
-                  //   ),
-                  // );
+                  // _scaffoldKey.currentState?.openEndDrawer();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfilePage(),
+                    ),
+                  );
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
