@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:naguib_selim/ui/screens/categories_page.dart';
 import 'package:naguib_selim/ui/screens/home_page.dart';
 
 class TabbarPage extends StatefulWidget {
@@ -22,10 +23,7 @@ class _TabbarPageState extends State<TabbarPage> {
   //New
   static const List<Widget> _pages = <Widget>[
     HomeScreen(),
-    Icon(
-      Icons.category_outlined,
-      size: 150,
-    ),
+    CategoriesPage(),
     Icon(
       Icons.chat,
       size: 150,
@@ -42,7 +40,7 @@ class _TabbarPageState extends State<TabbarPage> {
     return Scaffold(
       body: Center(child: _pages.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex, //New
+        currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
         items: const [
