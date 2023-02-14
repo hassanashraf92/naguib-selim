@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:naguib_selim/ui/components/categories/category_cell.dart';
-import 'package:naguib_selim/ui/screens/products_page.dart';
+import 'package:naguib_selim/ui/components/products/product_cell.dart';
 
-class CategoriesPage extends StatefulWidget {
-  const CategoriesPage({super.key});
+class ProductsPage extends StatefulWidget {
+  const ProductsPage({super.key});
 
   @override
-  State<CategoriesPage> createState() => _CategoriesPageState();
+  State<ProductsPage> createState() => _ProductsPageState();
 }
 
-class _CategoriesPageState extends State<CategoriesPage> {
+class _ProductsPageState extends State<ProductsPage> {
   final List<String> _images = [
     "https://images.wallpapersden.com/image/download/purple-sunrise-4k-vaporwave_bGplZmiUmZqaraWkpJRmbmdlrWZlbWU.jpg",
     "https://wallpaperaccess.com/full/2637581.jpg",
@@ -37,6 +34,9 @@ class _CategoriesPageState extends State<CategoriesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const BackButton(
+          color: Colors.black,
+        ),
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: const Text(
@@ -52,18 +52,14 @@ class _CategoriesPageState extends State<CategoriesPage> {
         scrollDirection: Axis.vertical,
         itemBuilder: ((context, index) {
           return Container(
-              padding: const EdgeInsets.only(right: 12, bottom: 12),
-              child: CategoryCell(
+            margin: const EdgeInsets.only(right: 12),
+            // padding: const EdgeInsets.only(right: 12, bottom: 12),
+            child: ProductCell(
                 imageUrl: _images[index],
-                categoryPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ProductsPage(),
-                    ),
-                  );
-                },
-              ));
+                productName: "Product " + index.toString(),
+                productCategory: "Fabrics",
+                productPrice: "1500 EGP"),
+          );
         }),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:naguib_selim/ui/components/categories/category_cell.dart';
+import 'package:naguib_selim/ui/screens/products_page.dart';
 
 class HomeCategoriesSection extends StatelessWidget {
   final List<String> images;
@@ -56,7 +57,17 @@ class HomeCategoriesSection extends StatelessWidget {
             itemBuilder: ((context, index) {
               return Container(
                   padding: const EdgeInsets.only(right: 12),
-                  child: CategoryCell(imageUrl: images[index]));
+                  child: CategoryCell(
+                    imageUrl: images[index],
+                    categoryPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProductsPage(),
+                        ),
+                      );
+                    },
+                  ));
             }),
           ),
         ),
