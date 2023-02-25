@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:naguib_selim/ui/components/products/product_cell.dart';
+import 'package:naguib_selim/ui/screens/product_internal_page.dart';
 
 class HomeProductSection extends StatelessWidget {
   final List<String> images;
@@ -20,7 +21,7 @@ class HomeProductSection extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+          padding: const EdgeInsets.only(top: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -33,6 +34,9 @@ class HomeProductSection extends StatelessWidget {
                 ),
               ),
               TextButton(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
                 onPressed: buttonPressed,
                 child: Text(
                   buttonText,
@@ -48,7 +52,7 @@ class HomeProductSection extends StatelessWidget {
         SizedBox(
           height: 188,
           child: ListView.builder(
-            padding: const EdgeInsets.only(left: 16),
+            // padding: const EdgeInsets.only(left: 16),
             itemCount: images.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: ((context, index) {
@@ -57,6 +61,14 @@ class HomeProductSection extends StatelessWidget {
                 productName: "Pandas",
                 productCategory: "Fabrics",
                 productPrice: "1500 EGP",
+                onItemPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductInternalPage(),
+                    ),
+                  );
+                },
               );
             }),
           ),

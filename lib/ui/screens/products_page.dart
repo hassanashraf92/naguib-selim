@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:naguib_selim/ui/components/products/product_cell.dart';
+import 'package:naguib_selim/ui/screens/product_internal_page.dart';
 
 class ProductsPage extends StatefulWidget {
   const ProductsPage({super.key});
@@ -55,10 +56,19 @@ class _ProductsPageState extends State<ProductsPage> {
             margin: const EdgeInsets.only(right: 12),
             // padding: const EdgeInsets.only(right: 12, bottom: 12),
             child: ProductCell(
-                imageUrl: _images[index],
-                productName: "Product " + index.toString(),
-                productCategory: "Fabrics",
-                productPrice: "1500 EGP"),
+              imageUrl: _images[index],
+              productName: "Product " + index.toString(),
+              productCategory: "Fabrics",
+              productPrice: "1500 EGP",
+              onItemPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductInternalPage(),
+                  ),
+                );
+              },
+            ),
           );
         }),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

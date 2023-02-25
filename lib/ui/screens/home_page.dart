@@ -22,40 +22,41 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFEEEEEE),
       body: SingleChildScrollView(
+          padding: EdgeInsets.all(16),
           child: Column(
-        children: [
-          const SizedBox(
-            height: 36,
-          ),
-          Container(
-            padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
-            child: AdsSlider(imagesUrls: _images),
-          ),
-          HomeCategoriesSection(
-            images: _images, // To be replaced with categories list.
-            title: "Categories",
-            buttonText: "View all",
-            onButtonPressed: () {},
-            onItemPressed: () {},
-          ),
-          HomeProductSection(
-            images: _images, //To be replaced with product list.
-            title: "Best Selling",
-            buttonText: "View all",
-            buttonPressed: () {
-              print("Home Best Selling Pressed");
-            },
-          ),
-          HomeProductSection(
-            images: _images, //To be replaced with products list.
-            title: "Featured Products",
-            buttonText: "View all",
-            buttonPressed: () {
-              print("Home Featured Products Pressed");
-            },
-          ),
-        ],
-      )),
+            children: [
+              const SizedBox(
+                height: 36,
+              ),
+              Container(
+                // padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+                child: AdsSlider(imagesUrls: _images),
+              ),
+              HomeCategoriesSection(
+                images: _images, // To be replaced with categories list.
+                title: "Categories",
+                buttonText: "View all",
+                onButtonPressed: () {},
+                onItemPressed: () {},
+              ),
+              HomeProductSection(
+                images: _images, //To be replaced with product list.
+                title: "Best Selling",
+                buttonText: "View all",
+                buttonPressed: () {
+                  print("Home Best Selling Pressed");
+                },
+              ),
+              HomeProductSection(
+                images: _images, //To be replaced with products list.
+                title: "Featured Products",
+                buttonText: "View all",
+                buttonPressed: () {
+                  print("Home Featured Products Pressed");
+                },
+              ),
+            ],
+          )),
     );
   }
 }
