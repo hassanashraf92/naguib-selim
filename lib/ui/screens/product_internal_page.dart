@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:naguib_selim/ui/components/MainButton.dart';
 import 'package:naguib_selim/ui/components/home/home_products_section.dart';
+import 'package:naguib_selim/ui/components/products/product_count.dart';
+import 'package:naguib_selim/ui/screens/cart_page.dart';
 
 class ProductInternalPage extends StatefulWidget {
   const ProductInternalPage({super.key});
@@ -93,32 +95,6 @@ class _ProductInternalPageState extends State<ProductInternalPage> {
                     },
                   ),
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Expanded(
-                //       child: Image.asset(
-                //         "assets/product_01.png",
-                //       ),
-                //     ),
-                //     SizedBox(
-                //       width: 16,
-                //     ),
-                //     Expanded(
-                //       child: Image.asset(
-                //         "assets/product_01.png",
-                //       ),
-                //     ),
-                //     SizedBox(
-                //       width: 16,
-                //     ),
-                //     Expanded(
-                //       child: Image.asset(
-                //         "assets/product_01.png",
-                //       ),
-                //     ),
-                //   ],
-                // ),
                 SizedBox(
                   height: 24,
                 ),
@@ -132,59 +108,7 @@ class _ProductInternalPageState extends State<ProductInternalPage> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.black,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(2),
-                            ),
-                          ),
-                          height: 25,
-                          width: 25,
-                          child: Center(
-                            child: Text(
-                              "-",
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 16,
-                        ),
-                        Container(
-                          height: 25,
-                          width: 25,
-                          child: Center(
-                            child: Text(
-                              "2",
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 16,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.black,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(2),
-                            ),
-                          ),
-                          height: 25,
-                          width: 25,
-                          child: Center(
-                            child: Text(
-                              "+",
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    ProductCounter(),
                   ],
                 ),
                 SizedBox(
@@ -257,7 +181,12 @@ class _ProductInternalPageState extends State<ProductInternalPage> {
             child: MainButton(
                 buttonText: "Add to Cart",
                 buttonAction: () {
-                  print("Add to cart");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CartPage(),
+                    ),
+                  );
                 }),
           ),
         ],

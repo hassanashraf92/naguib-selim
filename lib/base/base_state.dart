@@ -38,7 +38,12 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>
         barrierDismissible: false,
         builder: (BuildContext context) {
           return ErrorDialog(
+            type: AlertType.error,
             message: message,
+            actionBlock: () {
+              Navigator.pop(context);
+            },
+            actionButtonText: "Ok",
           );
         },
       );

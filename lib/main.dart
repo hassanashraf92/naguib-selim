@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       initialRoute: '/',
       routes: {
-        '/': (context) => TabbarPage(),
+        '/': (context) => RegisterPage(),
       },
     );
   }
